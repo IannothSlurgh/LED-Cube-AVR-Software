@@ -702,11 +702,13 @@
 	
 		current_layer = 0;
 	
+		//Courtesy of Mr. CHR (and Atmel datasheet)
 		OCR2 = 200; //Interrupt at counter = 10
 		TCCR2 |= (1<<WGM21); //prescale 128 with counter reset at OCR2
 		TCCR2 |= (1<<CS20) | (1<<CS22); //prescale 128 with counter reset at OCR2
 		TCNT2 = 0x00; //Counter starts at 0
 		TIMSK |= (1<<OCIE2); //Enable interrupt on count reset.
+		//Courtesy of Mr. CHR (and Atmel datasheet)
 		
 		uint8_t i = 0;
 		
